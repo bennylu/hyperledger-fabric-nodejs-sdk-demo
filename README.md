@@ -1,6 +1,6 @@
 # hyperledger-fabric-nodejs-sdk-demo
 
-This demonstrates how to use Hyperledger Fabric NodeJS SDK:
+This demonstration shows how to use Hyperledger Fabric NodeJS SDK:
 
 <li>Create a channel</li>
 <li>Join peers into a channel</li>
