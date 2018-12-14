@@ -16,11 +16,6 @@ cp <i><b>[YOUR FABRIC NETWORK ROOT]</b></i>/configtx.yaml .
 <h3>Copy the generated <b>crypto-confg</b> directory</h3>
 cp -rf <i><b>[YOUR FABRIC NETWORK ROOT]</b></i>/crypto-config .
 
-<h3>Copy orderer and peer certificates</h3>
-<li>cp crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt tls/orderer.crt</li>
-<li>cp crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt tls/peer0.crt</li>
-<li>cp crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt tls/peer1.crt</li>
-
 <h3>Copy admin user private key and certificate</h3>
 <li>cp crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/8ea7f5242c6cefa5df5508d9c509c7ad29ced5edf7384a2d1d3cb74124e2d7c6_sk admin/private_key</li>
 <li>cp crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem admin/certificate</li>
