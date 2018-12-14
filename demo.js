@@ -1,16 +1,16 @@
 process.env['GOPATH'] = './';
 
 // channel info
-var configtxgen = '../../../bin/configtxgen';
-var channelName = 'channel-name';
+const configtxgen = '../../../bin/configtxgen';
+const channelName = 'channel-name';
 
 // chaincode info
-var chaincodePath = 'chaincode/chaincode_example02/go/';
-var chaincodeName = 'mycc';
-var chaincodeVersion = '1.0';
-var chaincodeType = 'golang';
-var chaincodeInitFunc = 'init';
-var chaincodeInitArgs = ['a', '100', 'b', '200'];
+const chaincodePath = 'chaincode/chaincode_example02/go/';
+const chaincodeName = 'mycc';
+const chaincodeVersion = '1.0';
+const chaincodeType = 'golang';
+const chaincodeInitFunc = 'init';
+const chaincodeInitArgs = ['a', '100', 'b', '200'];
 
 var Fabric_Client = require('fabric-client');                                                                                   
 var client = new Fabric_Client();
@@ -23,17 +23,17 @@ var certificate = fs.readFileSync('./admin/certificate', 'utf8');
 var mspId = 'Org1MSP';
 client.setAdminSigningIdentity(private_key, certificate, mspId);
 
-var orderer = client.newOrderer('grpcs://localhost:7050', {
+const orderer = client.newOrderer('grpcs://10.62.58.64:7050', {
     'pem': fs.readFileSync('./tls/orderer.crt', 'utf8'),
     'ssl-target-name-override': 'orderer.example.com'
 });
 
-var peer0 = client.newPeer('grpcs://localhost:7051', {
+const peer0 = client.newPeer('grpcs://10.62.58.64:7051', {
     'pem': fs.readFileSync('./tls/peer0.crt', 'utf8'),
     'ssl-target-name-override': 'peer0.org1.example.com'
 });
 
-var peer1 = client.newPeer('grpcs://10.62.58.66:17051', {
+const peer1 = client.newPeer('grpcs://10.62.58.66:17051', {
     'pem': fs.readFileSync('./tls/peer1.crt', 'utf8'),
     'ssl-target-name-override': 'peer1.org1.example.com'
 });
