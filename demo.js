@@ -24,17 +24,17 @@ var mspId = 'Org1MSP';
 client.setAdminSigningIdentity(private_key, certificate, mspId);
 
 const orderer = client.newOrderer('grpcs://10.62.58.64:7050', {
-    'pem': fs.readFileSync('./tls/orderer.crt', 'utf8'),
+    'pem': fs.readFileSync('./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt', 'utf8'),
     'ssl-target-name-override': 'orderer.example.com'
 });
 
 const peer0 = client.newPeer('grpcs://10.62.58.64:7051', {
-    'pem': fs.readFileSync('./tls/peer0.crt', 'utf8'),
+    'pem': fs.readFileSync('./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt', 'utf8'),
     'ssl-target-name-override': 'peer0.org1.example.com'
 });
 
 const peer1 = client.newPeer('grpcs://10.62.58.66:17051', {
-    'pem': fs.readFileSync('./tls/peer1.crt', 'utf8'),
+    'pem': fs.readFileSync('./crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt', 'utf8'),
     'ssl-target-name-override': 'peer1.org1.example.com'
 });
 
