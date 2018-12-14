@@ -1,3 +1,17 @@
+process.env['GOPATH'] = './';
+
+// channel info
+var configtxgen = '../../../bin/configtxgen';
+var channelName = 'channel-name';
+
+// chaincode info
+var chaincodePath = 'chaincode/chaincode_example02/go/';
+var chaincodeName = 'mycc';
+var chaincodeVersion = '1.0';
+var chaincodeType = 'golang';
+var chaincodeInitFunc = 'init';
+var chaincodeInitArgs = ['a', '100', 'b', '200'];
+
 var Fabric_Client = require('fabric-client');                                                                                   
 var client = new Fabric_Client();
 var fs = require('fs');
@@ -25,18 +39,6 @@ var peer1 = client.newPeer('grpcs://10.62.58.66:17051', {
 });
 
 var peers = [peer0, peer1];
-
-var configtxgen = '../../../bin/configtxgen';
-
-process.env['GOPATH'] = './';
-
-var channelName = 'channel-name';
-var chaincodePath = 'chaincode/chaincode_example02/go/';
-var chaincodeName = 'mycc';
-var chaincodeVersion = '1.0';
-var chaincodeType = 'golang';
-var chaincodeInitFunc = 'init';
-var chaincodeInitArgs = ['a', '100', 'b', '200'];
 
 // generate channel definition file
 var generateChannelDefinition = channelName => {
