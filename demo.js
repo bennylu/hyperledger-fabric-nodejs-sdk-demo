@@ -2,7 +2,7 @@ process.env['GOPATH'] = './';
 
 // channel info
 const configtxgen = '../../../bin/configtxgen';
-const channelName = 'channel-name';
+const channelName = 'mychannel';
 
 // chaincode info
 const chaincodePath = 'chaincode/chaincode_example02/go/';
@@ -129,7 +129,26 @@ var instantiateChaincode = async (channel_name, name, version, type, fcn, args) 
         args
     };
 
-    return channel.sendInstantiateProposal(request, 60000);
+    var results = await channel.sendInstantiateProposal(request, 60000);
+
+    var proposal_responses = results[0];
+    var proposal = results[1];
+
+    for (var i in proposal_responses) {
+        if (!proposal_responses || !proposal_responses[i].response
+                || proposal_responses[i].response.status !== 200) {
+            throw new Error('instantiate proposal is bad');
+        }
+    }
+
+    var orderer_request = {
+        txId,
+        orderer,
+        proposalResponses: proposal_responses,
+        proposal: proposal
+    };
+
+    return channel.sendTransaction(orderer_request);
 };
 
 createChannel(channelName).then(result => {
@@ -145,8 +164,9 @@ createChannel(channelName).then(result => {
     console.log('install chaincode: done');
     return instantiateChaincode(channelName, chaincodeName, chaincodeVersion, chaincodeType,
         chaincodeInitFunc, chaincodeInitArgs);
-}).then(responses => {
-    console.log(responses);
+}).then(result => {
+    if (result.status != 'SUCCESS')
+        throw new Error(result.info);
     console.log('instantiate chaincode: done');
 }).catch(err => {
     console.log(err);
