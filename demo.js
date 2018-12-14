@@ -33,7 +33,7 @@ const peer0 = client.newPeer('grpcs://10.62.58.64:7051', {
     'ssl-target-name-override': 'peer0.org1.example.com'
 });
 
-const peer1 = client.newPeer('grpcs://10.62.58.66:17051', {
+const peer1 = client.newPeer('grpcs://10.62.58.66:7051', {
     'pem': fs.readFileSync('./crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt', 'utf8'),
     'ssl-target-name-override': 'peer1.org1.example.com'
 });
@@ -143,7 +143,8 @@ createChannel(channelName).then(result => {
 }).then(responses => {
     console.log(responses);
     console.log('install chaincode: done');
-    return instantiateChaincode(channelName, chaincodeName, chaincodeVersion, chaincodeType, chaincodeInitFunc, chaincodeInitArgs);
+    return instantiateChaincode(channelName, chaincodeName, chaincodeVersion, chaincodeType,
+        chaincodeInitFunc, chaincodeInitArgs);
 }).then(responses => {
     console.log(responses);
     console.log('instantiate chaincode: done');
