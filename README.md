@@ -11,10 +11,10 @@ This demonstrates how to create a channel, join peer, install chaincode and inst
 <li>2 peers (peer0.org1.example.com, peer1.org1.example.com)</li>
 
 <h3>Copy <b>configtx.yaml</b></h3>
-cp <i><b>[YOUR-FABRIC_NETWORK_ROOT]</b></i>/configtx.yaml .
+cp <i><b>[YOUR FABRIC NETWORK ROOT]</b></i>/configtx.yaml .
 
 <h3>Copy the generated <b>crypto-confg</b> directory</h3>
-cp -rf <i><b>[YOUR-FABRIC_NETWORK_ROOT]</b></i>/crypto-config .
+cp -rf <i><b>[YOUR FABRIC NETWORK ROOT]</b></i>/crypto-config .
 
 <h3>Copy orderer and peer certificates</h3>
 <li>cp crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt tls/orderer.crt</li>
