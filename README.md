@@ -1,6 +1,13 @@
 # hyperledger-fabric-nodejs-sdk-demo
 
-This demonstrates how to create a channel, join peer, install chaincode and instantiate chaincode using Hyperledger Fabric NodeJS SDK.
+This demonstration shows how to use Hyperledger Fabric NodeJS SDK:
+
+<li>Create a channel</li>
+<li>Join peers into a channel</li>
+<li>Install chaincode</li>
+<li>Instantiate chaincode</li>
+<li>Query chaincode</li>
+<li>Invoke chaincode</li>
 
 <h1>Setup</h1>
 
